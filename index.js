@@ -25,6 +25,15 @@ function createMenuBar() {
     </div>
     `;
 }
+function createHomePage() {
+  return `
+      <section id="home">
+        <h2>🎁 Welcome to Amo Gift!</h2>
+        <p>🧧 Your one-stop shop for unique and personalized gift.</p>
+        <img src="images/home-banner.jpg" alt="Amo Gift Banner"  height="600px" />
+      </section>
+      `;
+}
 
 function createFooter() {
   return `
@@ -55,6 +64,6 @@ function createFooter() {
 }
 
 function initEvents() {
-  document.body.innerHTML = createHeader() + createFooter();
+  document.body.innerHTML = createHeader() + createHomePage() + createFooter();
 }
 initEvents();
