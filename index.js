@@ -34,10 +34,22 @@ function createHomePage() {
       </section>
       `;
 }
+
+function createProductsPage() {
+  return `
+    <section id="products">
+      <h2>🎈 Products!</h2>
+      <p>🎀 Choose from our unique and personalized gifts.</p>
+      <img src="images/home-banner.jpg" alt="Amo Gift Banner"  height="600px" />
+    </section>
+    `;
+}
 function loadPage(page) {
   const main = document.getElementById("main");
   if (page === "home") {
     main.innerHTML = createHomePage();
+  } else if (page === "products") {
+    main.innerHTML = createProductsPage();
   } else {
     console.log("creating page");
     main.innerHTML = `<h2>${page} page is under construction</h2>`;
