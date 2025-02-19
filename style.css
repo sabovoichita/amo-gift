@@ -75,18 +75,41 @@ section h2 {
   color: #ff3b3b;
 }
 
-#footer {
+footer {
+  background-color: #900;
+  padding: 15px;
   display: flex;
-  position: fixed;
-  bottom: 0;
-  padding: 0;
-  margin: 0;
-  background-color: red;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
-#footer div {
-  padding: 10px;
+footer div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-#footer a {
-  color: #000;
+
+.footerImg {
+  background-color: #fff;
+  color: #900;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+footer a,
+footer span {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #ff3b3b;
 }
