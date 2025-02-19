@@ -40,16 +40,29 @@ function createProductsPage() {
     <section id="products">
       <h2>🎈 Products!</h2>
       <p>🎀 Choose from our unique and personalized gifts.</p>
-      <img src="images/home-banner.jpg" alt="Amo Gift Banner"  height="600px" />
+      <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
     </section>
     `;
 }
+
+function createOrdersPage() {
+  return `
+    <section id="orders">
+      <h2>🛒Your Orders are here!</h2>
+      <p>🥂Thank you for shopping with us!</p>
+      <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
+    </section>
+    `;
+}
+
 function loadPage(page) {
   const main = document.getElementById("main");
   if (page === "home") {
     main.innerHTML = createHomePage();
   } else if (page === "products") {
     main.innerHTML = createProductsPage();
+  } else if (page === "orders") {
+    main.innerHTML = createOrdersPage();
   } else {
     console.log("creating page");
     main.innerHTML = `<h2>${page} page is under construction</h2>`;
