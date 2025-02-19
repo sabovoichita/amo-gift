@@ -113,3 +113,14 @@ footer span {
 footer a:hover {
   color: #ff3b3b;
 }
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #top-menu-ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
