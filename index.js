@@ -7,7 +7,9 @@ function createTitle() {
 function createHeader() {
   return `
   <header>
-    <img src="images/logo.jpg" alt="logo" id="logo"/>
+    <div id="logo-wrapper">
+        <img src="images/logo.jpg" alt="logo" id="logo"/>
+    </div>
     ${createTitle()}
     ${createMenuBar()}
   </header>`;
