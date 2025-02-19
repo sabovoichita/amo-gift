@@ -38,7 +38,7 @@ function createHomePage() {
 function createProductsPage() {
   return `
     <section id="products">
-      <h2>🎈 Products!</h2>
+      <h2>🎈 Our Products!</h2>
       <p>🎀 Choose from our unique and personalized gifts.</p>
       <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
     </section>
@@ -54,6 +54,16 @@ function createOrdersPage() {
     </section>
     `;
 }
+function createReviewsPage() {
+  return `
+    <section id="reviews">
+      <h2>🏆 Here are our reviews!</h2>
+      <p>📚 At the end of your order please leave us a review!</p>
+      <p>Thank you!</p>
+      <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
+    </section>
+    `;
+}
 
 function loadPage(page) {
   const main = document.getElementById("main");
@@ -63,6 +73,8 @@ function loadPage(page) {
     main.innerHTML = createProductsPage();
   } else if (page === "orders") {
     main.innerHTML = createOrdersPage();
+  } else if (page === "reviews") {
+    main.innerHTML = createReviewsPage();
   } else {
     console.log("creating page");
     main.innerHTML = `<h2>${page} page is under construction</h2>`;
