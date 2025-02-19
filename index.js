@@ -34,6 +34,15 @@ function createHomePage() {
       </section>
       `;
 }
+function loadPage(page) {
+  const main = document.getElementById("main");
+  if (page === "home") {
+    main.innerHTML = createHomePage();
+  } else {
+    console.log("creating page");
+    main.innerHTML = `<h2>${page} page is under construction</h2>`;
+  }
+}
 
 function createFooter() {
   return `
@@ -64,6 +73,16 @@ function createFooter() {
 }
 
 function initEvents() {
-  document.body.innerHTML = createHeader() + createHomePage() + createFooter();
+  document.body.innerHTML =
+    createHeader() + `<main id="main"></main>` + createFooter();
+  loadPage("home");
+  document
+    .getElementById("top-menu-ul")
+    .addEventListener("click", function (e) {
+      if (e.target.tagName === "A") {
+        const page = e.target.getAttribute("data-page");
+        loadPage(page);
+      }
+    });
 }
 initEvents();
