@@ -16,11 +16,11 @@ function createHeader() {
 function createMenuBar() {
   return `<div id="top-menu">
       <ul id="top-menu-ul">
-        <li><a href="#" data-page="home">🏡Home</a></li>
-        <li><a href="#" data-page="products">🎈Products</a></li>
-        <li><a href="#" data-page="orders">🛒Orders</a></li>
-        <li><a href="#" data-page="reviews">🎞Reviews</a></li>
-        <li><a href="#" data-page="contact">🖋Contact</a></li>
+        <li><a href="#" data-page="home">🏡 Home</a></li>
+        <li><a href="#" data-page="products">🎈 Products</a></li>
+        <li><a href="#" data-page="orders">🛒 Orders</a></li>
+        <li><a href="#" data-page="reviews">🎞 Reviews</a></li>
+        <li><a href="#" data-page="contact">🖋 Contact</a></li>
       </ul>
     </div>
     `;
@@ -48,8 +48,8 @@ function createProductsPage() {
 function createOrdersPage() {
   return `
     <section id="orders">
-      <h2>🛒Your Orders are here!</h2>
-      <p>🥂Thank you for shopping with us!</p>
+      <h2>🛒 Your Orders are here!</h2>
+      <p>🥂 Thank you for shopping with us!</p>
       <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
     </section>
     `;
@@ -100,25 +100,25 @@ function createFooter() {
     <footer id="footer">
       <div id=footerContact>
         <div class="footerImg">img</div>
-        <h3>🔊Contact</h3>
+        <h3>🔊 Contact</h3>
       </div>
       <div id="footerMobile">
       <div class="footerImg">img</div>
-        <span>🤙Telefon: 0759142186</span>
-        <span>📞WhatsApp: 0756921941</span>
+        <span>🤙 Telefon: 0759142186</span>
+        <span>📞 WhatsApp: 0756921941</span>
       </div>
       <div id="footerFacebook">
         <div class="footerImg">img</div>
         <a href="https://www.facebook.com/AmoGiftOficial" target="_blank"
-          >🔎Facebook</a>
+          >🔎 Facebook</a>
       </div>
       <div id="footerEmail">
         <div class="footerImg">img</div>
-        <a href="mailto:hristachem@yahoo.com">📩Email us</a>
+        <a href="mailto:hristachem@yahoo.com">📩 Email us</a>
       </div>
       <div id="footerAddress">
         <div class="footerImg">img</div>
-        <span>🏡Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
+        <span>🏡 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
       </div>
     </footer>`;
 }
