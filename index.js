@@ -9,7 +9,21 @@ function createHeader() {
   <header>
     <img src="images/logo.jpg" alt="logo" id="logo"/>
     ${createTitle()}
+    ${createMenuBar()}
   </header>`;
+}
+
+function createMenuBar() {
+  return `<div id="top-menu">
+      <ul id="top-menu-ul">
+        <li><a href="#" data-page="home">🏡Home</a></li>
+        <li><a href="#" data-page="products">🎈Products</a></li>
+        <li><a href="#" data-page="orders">🛒Orders</a></li>
+        <li><a href="#" data-page="reviews">🎞Reviews</a></li>
+        <li><a href="#" data-page="contact">🖋Contact</a></li>
+      </ul>
+    </div>
+    `;
 }
 
 function createFooter() {

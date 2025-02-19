@@ -9,6 +9,17 @@ h1 {
   width: 200px;
 }
 
+a {
+  text-decoration: none;
+}
+#top-menu-ul {
+  display: flex;
+}
+#top-menu-ul li {
+  padding: 10px;
+  list-style: none;
+}
+
 #footer {
   display: flex;
   position: fixed;
