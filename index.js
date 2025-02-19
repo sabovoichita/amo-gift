@@ -54,12 +54,24 @@ function createOrdersPage() {
     </section>
     `;
 }
+
 function createReviewsPage() {
   return `
     <section id="reviews">
       <h2>🏆 Here are our reviews!</h2>
       <p>📚 At the end of your order please leave us a review!</p>
       <p>Thank you!</p>
+      <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
+    </section>
+    `;
+}
+
+function createContactPage() {
+  return `
+    <section id="contact">
+      <h2>☎ Contact us for your order!</h2>
+      <p>📚 We are here to help!</p>
+      <p>🙏 Thank you!</p>
       <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
     </section>
     `;
@@ -75,6 +87,8 @@ function loadPage(page) {
     main.innerHTML = createOrdersPage();
   } else if (page === "reviews") {
     main.innerHTML = createReviewsPage();
+  } else if (page === "contact") {
+    main.innerHTML = createContactPage();
   } else {
     console.log("creating page");
     main.innerHTML = `<h2>${page} page is under construction</h2>`;
