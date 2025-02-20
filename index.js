@@ -38,28 +38,58 @@ function createHomePage() {
 }
 
 function createProductsPage() {
-  let imagesHTML = "";
-  for (let i = 0; i <= 9; i++) {
-    imagesHTML += `
-      <div class="productCard">
-        <div class="productImgWrap">
-          <img src="images/martisor/martisor-${i}.jpg" alt="Martisor ${i}" class="productImage" height="200px"/>
-        </div>
-        <div class="productDetails">
-          <h3>Martisor ${i}</h3>
-        </div>
-      </div>
-    `;
-  }
   return `
     <section id="products">
       <h2>🎈 Our Products!</h2>
       <p>🎀 Choose from our unique and personalized gifts.</p>
+
+      <h3>🎁 Mărțișor Collection</h3>
       <div class="productGrid">
-        ${imagesHTML}
+        ${generateProductImages("martisor", 6)}
+      </div>
+
+      <h3>🕯 Lumânare Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages("lumanare", 3)}
       </div>
     </section>
   `;
+}
+
+function generateProductImages(category, count) {
+  let imagesHTML = "";
+  for (let i = 1; i <= count; i++) {
+    imagesHTML += `
+        <div class="productCard">
+          <div class="productImgWrap">
+            <img src="images/${category}/${category}-${i}.jpg" alt="${category} ${i}" class="productImage" height="200px"/>
+          </div>
+          <div class="productDetails">
+            <h3>${
+              category.charAt(0).toUpperCase() + category.slice(1)
+            } ${i}</h3>
+          </div>
+        </div>
+      `;
+  }
+  return imagesHTML;
+}
+
+function generateProductImages(category, count) {
+  let imagesHTML = "";
+  for (let i = 1; i <= count; i++) {
+    imagesHTML += `
+      <div class="productCard">
+        <div class="productImgWrap">
+          <img src="images/${category}/${category}-${i}.jpg" alt="${category} ${i}" class="productImage" height="200px"/>
+        </div>
+        <div class="productDetails">
+          <h3>${category.charAt(0).toUpperCase() + category.slice(1)} ${i}</h3>
+        </div>
+      </div>
+    `;
+  }
+  return imagesHTML;
 }
 
 function createOrdersPage() {
