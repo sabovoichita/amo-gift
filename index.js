@@ -60,7 +60,7 @@ function createProductsPage() {
 
       <h3>💐 Aranjament Collection</h3>
       <div class="productGrid">
-        ${generateProductImages("aranjament", 4)}
+        ${generateProductImages("aranjament", 23)}
       </div>
 
       <h3>🌻 Martie Collection</h3>
@@ -70,10 +70,10 @@ function createProductsPage() {
 
       <h3>💑 Tricouri Collection</h3>
       <div class="productGrid">
-        ${generateProductImages("tricouri", 1)}
+        ${generateProductImages("tricouri", 13)}
       </div>
 
-      <h3>💑 Botez Collection</h3>
+      <h3>👶 Botez Collection</h3>
       <div class="productGrid">
         ${generateProductImages("botez", 1)}
       </div>
