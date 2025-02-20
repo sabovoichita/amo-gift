@@ -52,6 +52,11 @@ function createProductsPage() {
       <div class="productGrid">
         ${generateProductImages("lumanare", 3)}
       </div>
+
+      <h3>🖼 Tablouri Licheni Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages("licheni", 9)}
+      </div>
     </section>
   `;
 }
@@ -71,23 +76,6 @@ function generateProductImages(category, count) {
           </div>
         </div>
       `;
-  }
-  return imagesHTML;
-}
-
-function generateProductImages(category, count) {
-  let imagesHTML = "";
-  for (let i = 1; i <= count; i++) {
-    imagesHTML += `
-      <div class="productCard">
-        <div class="productImgWrap">
-          <img src="images/${category}/${category}-${i}.jpg" alt="${category} ${i}" class="productImage" height="200px"/>
-        </div>
-        <div class="productDetails">
-          <h3>${category.charAt(0).toUpperCase() + category.slice(1)} ${i}</h3>
-        </div>
-      </div>
-    `;
   }
   return imagesHTML;
 }
