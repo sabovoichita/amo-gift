@@ -210,25 +210,35 @@ function createFooter() {
   return `
     <footer id="footer">
       <div id=footerContact>
-        <div class="footerImg">img</div>
+        <div class="footerImg">
+        <img src="images/icons/contact.webp" alt="Amo Gift Icon"  height="40px" />
+        </div>
         <h3>🔊 Contact</h3>
       </div>
       <div id="footerMobile">
-      <div class="footerImg">img</div>
+      <div class="footerImg">
+        <img src="images/icons/phone.webp" alt="Amo Gift Icon"  height="40px" />
+      </div>
         <span>🤙 Telefon: 0759142186</span>
         <span>📞 WhatsApp: 0756921941</span>
       </div>
       <div id="footerFacebook">
-        <div class="footerImg">img</div>
+        <div class="footerImg">
+        <img src="images/icons/facebook.webp" alt="Amo Gift Icon"  height="40px" />
+        </div>
         <a href="https://www.facebook.com/AmoGiftOficial" target="_blank"
           >🔎 Facebook</a>
       </div>
       <div id="footerEmail">
-        <div class="footerImg">img</div>
+        <div class="footerImg">
+        <img src="images/icons/email.webp" alt="Amo Gift Icon"  height="40px" />
+        </div>
         <a href="mailto:hristachem@yahoo.com">📩 Email us</a>
       </div>
       <div id="footerAddress">
-        <div class="footerImg">img</div>
+        <div class="footerImg">
+        <img src="images/icons/address.webp" alt="Amo Gift Icon"  height="40px" />
+        </div>
         <span>🏡 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
       </div>
     </footer>`;
