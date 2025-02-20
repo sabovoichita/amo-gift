@@ -55,7 +55,7 @@ function createProductsPage() {
 
       <h3>🖼 Tablouri Licheni Collection</h3>
       <div class="productGrid">
-        ${generateProductImages("licheni", 9)}
+        ${generateProductImages("licheni", 10)}
       </div>
 
       <h3>💐 Aranjament Collection</h3>
@@ -63,9 +63,19 @@ function createProductsPage() {
         ${generateProductImages("aranjament", 4)}
       </div>
 
-      <h3>💐 Martie Collection</h3>
+      <h3>🌻 Martie Collection</h3>
       <div class="productGrid">
         ${generateProductImages("martie", 6)}
+      </div>
+
+      <h3>💑 Tricouri Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages("tricouri", 1)}
+      </div>
+
+      <h3>💑 Botez Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages("botez", 1)}
       </div>
     </section>
   `;
