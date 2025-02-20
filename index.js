@@ -38,13 +38,28 @@ function createHomePage() {
 }
 
 function createProductsPage() {
+  let imagesHTML = "";
+  for (let i = 0; i <= 6; i++) {
+    imagesHTML += `
+      <div class="productCard">
+        <div class="productImgWrap">
+          <img src="images/martisor/martisor-${i}.jpg" alt="Martisor ${i}" class="productImage" height="200px"/>
+        </div>
+        <div class="productDetails">
+          <h3>Martisor ${i}</h3>
+        </div>
+      </div>
+    `;
+  }
   return `
     <section id="products">
       <h2>🎈 Our Products!</h2>
       <p>🎀 Choose from our unique and personalized gifts.</p>
-      <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
+      <div class="productGrid">
+        ${imagesHTML}
+      </div>
     </section>
-    `;
+  `;
 }
 
 function createOrdersPage() {
