@@ -1,4 +1,4 @@
-console.log("Welcome");
+let cart = [];
 
 function createTitle() {
   return `<h1>Amo Gift</h1>`;
@@ -38,6 +38,15 @@ function createHomePage() {
 }
 
 function createProductsPage() {
+  setTimeout(() => {
+    document.querySelectorAll(".addToCart").forEach((button) => {
+      button.addEventListener("click", function () {
+        const category = this.getAttribute("data-category");
+        const index = this.getAttribute("data-index");
+        addToCart(category, index);
+      });
+    });
+  }, 100);
   return `
     <section id="products">
       <h2>🎈 Our Products!</h2>
@@ -103,6 +112,7 @@ function generateProductImages(category, count) {
             <h3>${
               category.charAt(0).toUpperCase() + category.slice(1)
             } ${i}</h3>
+             <button class="addToCart" data-category="${category}" data-index="${i}">🛒 Add to Cart</button>
           </div>
         </div>
       `;
@@ -160,9 +170,28 @@ function loadPage(page) {
   }
 }
 
+function addToCart(category, index) {
+  const product = {
+    category: category,
+    index: index,
+    name: `${category.charAt(0).toUpperCase() + category.slice(1)} ${index}`,
+    image: `images/${category}/${category}-${index}.jpg`,
+  };
+
+  cart.push(product);
+  updateCartUI();
+}
+function updateCartUI() {
+  console.log("Here");
+}
+
 function createFooter() {
   return `
     <footer id="footer">
+      <div id="cart">
+         <h3>🛍 Your Cart</h3>
+          <ul id="cartItems"></ul>
+      </div>
       <div id=footerContact>
         <div class="footerImg">img</div>
         <h3>🔊 Contact</h3>
