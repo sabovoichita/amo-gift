@@ -125,7 +125,10 @@ function createOrdersPage() {
     <section id="orders">
       <h2>🛒 Your Orders are here!</h2>
       <p>🥂 Thank you for shopping with us!</p>
-      <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
+      <div id="cart">
+         <h3>🛍 Your Cart</h3>
+          <ul id="cartItems"></ul>
+      </div>
     </section>
     `;
 }
@@ -160,6 +163,7 @@ function loadPage(page) {
     main.innerHTML = createProductsPage();
   } else if (page === "orders") {
     main.innerHTML = createOrdersPage();
+    updateCartUI();
   } else if (page === "reviews") {
     main.innerHTML = createReviewsPage();
   } else if (page === "contact") {
@@ -182,16 +186,29 @@ function addToCart(category, index) {
   updateCartUI();
 }
 function updateCartUI() {
-  console.log("Here");
+  const cartItems = document.getElementById("cartItems");
+  if (cartItems) {
+    cartItems.innerHTML = "";
+    cart.forEach((item, index) => {
+      cartItems.innerHTML += `
+        <li>
+          <img src="${item.image}" alt="${item.name}" height="50px"/>
+          ${item.name}
+          <button onclick="removeFromCart(${index})">❌ Remove</button>
+        </li>
+      `;
+    });
+  }
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartUI();
 }
 
 function createFooter() {
   return `
     <footer id="footer">
-      <div id="cart">
-         <h3>🛍 Your Cart</h3>
-          <ul id="cartItems"></ul>
-      </div>
       <div id=footerContact>
         <div class="footerImg">img</div>
         <h3>🔊 Contact</h3>
