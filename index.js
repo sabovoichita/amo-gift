@@ -139,7 +139,7 @@ function createReviewsPage() {
       <h2>🏆 Here are our reviews!</h2>
       <p>📚 At the end of your order please leave us a review!</p>
       <p>Thank you!</p>
-      <img src="images/logo.jpg" alt="Amo Gift Logo"  height="400px" />
+      <img src="images/logo.jpg" alt="Amo Gift Logo" />
     </section>
     `;
 }
