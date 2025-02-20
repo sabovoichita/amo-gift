@@ -32,7 +32,7 @@ function createHomePage() {
       <section id="home">
         <h2>🎁 Welcome to Amo Gift!</h2>
         <p>🧧 Your one-stop shop for unique and personalized gift.</p>
-        <img src="images/home-banner.jpg" alt="Amo Gift Banner"  height="600px" />
+        <img src="images/home-banner.jpg" alt="Amo Gift Banner" />
       </section>
       `;
 }
@@ -175,7 +175,7 @@ function createContactPage() {
         <div class="footerImg">
         <img src="images/icons/address.webp" alt="Amo Gift Icon"  height="40px" />
         </div>
-        <span>🏡 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
+        <span>📌 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
       </div>
         </section>
     `;
