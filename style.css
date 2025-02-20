@@ -75,6 +75,12 @@ section {
 section h2 {
   color: #ff3b3b;
 }
+#home img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
 .productGrid {
   display: flex;
@@ -198,6 +204,10 @@ footer a:hover {
 }
 
 @media (max-width: 480px) {
+  #home img {
+    max-width: 90%;
+  }
+
   h1 {
     font-size: 1.5rem;
   }
