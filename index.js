@@ -219,15 +219,26 @@ function loadPage(page) {
 }
 
 function addToCart(category, index) {
-  const product = {
-    category: category,
-    index: index,
-    name: `${category.charAt(0).toUpperCase() + category.slice(1)} ${index}`,
-    image: `images/${category}/${category}-${index}.jpg`,
-  };
-  cart.push(product);
+  const productName = `${
+    category.charAt(0).toUpperCase() + category.slice(1)
+  } ${index}`;
+  const existingItem = cart.find(
+    (item) => item.category === category && item.index === index
+  );
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      category: category,
+      index: index,
+      name: productName,
+      image: `images/${category}/${category}-${index}.jpg`,
+      quantity: 1,
+    });
+  }
+
   updateCartUI();
-  showNotification(`${product.name} added to cart!`);
+  showNotification(`${productName} added to cart!`);
 }
 
 function showNotification(message) {
@@ -251,20 +262,25 @@ function updateCartUI() {
   const cartItems = document.getElementById("cartItems");
   if (cartItems) {
     cartItems.innerHTML = "";
+
     cart.forEach((item, index) => {
-      cartItems.innerHTML += `
-        <li>
-          <img src="${item.image}" alt="${item.name}" height="50px"/>
-          ${item.name}
-          <button onclick="removeFromCart(${index})">❌ Remove</button>
-        </li>
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" height="50px"/>
+        <span>${item.name} (x ${item.quantity} pieces)</span>
+        <button onclick="removeFromCart(${index})">❌ Remove</button>
       `;
+      cartItems.appendChild(li);
     });
   }
 }
 
 function removeFromCart(index) {
-  cart.splice(index, 1);
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1);
+  }
   updateCartUI();
 }
 
