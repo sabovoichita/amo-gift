@@ -54,7 +54,7 @@ function createProductsPage() {
 
       <h3>🎁 Mărțișor Collection</h3>
       <div class="productGrid">
-        ${generateProductImages("martisor", 6)}
+        ${generateProductImages("martisor", 9)}
       </div>
 
       <h3>🕯 Lumânare Collection</h3>
