@@ -315,6 +315,27 @@ function createFooter() {
     </footer>`;
 }
 
+function sendOrderToWhatsApp() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let message = "🛍 *New Order from Amo Gift!*\n\n";
+  cart.forEach((item, index) => {
+    message += `${index + 1}. ${item.name} (x${item.quantity})\n`;
+  });
+
+  message +=
+    "\n📞 *Please confirm your contact details:*\n- Name:\n- Address:\n- Phone:\n";
+
+  const encodedMessage = encodeURIComponent(message);
+  const phone = "0034642771871"; //
+  const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
+
+  window.open(whatsappURL, "_blank");
+}
+
 function initEvents() {
   document.body.innerHTML =
     createHeader() + `<main id="main"></main>` + createFooter();
@@ -327,5 +348,10 @@ function initEvents() {
         loadPage(page);
       }
     });
+  document.addEventListener("click", function (e) {
+    if (e.target.id === "placeOrder") {
+      sendOrderToWhatsApp();
+    }
+  });
 }
 initEvents();
