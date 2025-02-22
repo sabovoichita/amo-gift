@@ -177,6 +177,7 @@ function createContactPage() {
         </div>
         <span>📌 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
       </div>
+        <img src="images/home-banner.jpg" alt="Amo Gift Banner" />
         </section>
     `;
 }

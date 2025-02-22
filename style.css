@@ -75,7 +75,8 @@ section {
 section h2 {
   color: #ff3b3b;
 }
-#home img {
+#home img,
+#reviews img {
   max-width: 100%;
   height: auto;
   display: block;
