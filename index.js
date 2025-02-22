@@ -128,6 +128,7 @@ function createOrdersPage() {
       <div id="cart">
          <h3>🛍 Your Cart</h3>
           <ul id="cartItems"></ul>
+          <button id="placeOrder">✅ Place Order</button>
       </div>
     </section>
     `;
