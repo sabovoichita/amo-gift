@@ -116,6 +116,11 @@ function createProductsPage() {
       <div class="productGrid">
         ${generateProductImages("perna", 1)}
       </div>
+
+      <h3>🍾 Eticheta Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages("eticheta", 2)}
+      </div>
     </section>
   `;
 }
