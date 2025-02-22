@@ -262,7 +262,6 @@ function updateCartUI() {
   const cartItems = document.getElementById("cartItems");
   if (cartItems) {
     cartItems.innerHTML = "";
-
     cart.forEach((item, index) => {
       const li = document.createElement("li");
       li.innerHTML = `
