@@ -150,35 +150,52 @@ function createContactPage() {
       <h2>☎ Contact us for your order!</h2>
       <p>📚 We are here to help!</p>
       <p>🙏 Thank you!</p>
-        <img src="images/icons/contact.webp" alt="Amo Gift Icon"  height="40px" />
-    <div id="footerMobile">
-      <div class="footerImg">
-        <img src="images/icons/phone.webp" alt="Amo Gift Icon"  height="40px" />
-      </div>
+      <img src="images/icons/contact.webp" alt="Amo Gift Icon" height="40px" />
+      <div id="footerMobile">
+        <div class="footerImg">
+          <img
+            src="images/icons/phone.webp"
+            alt="Amo Gift Icon"
+            height="40px"
+          />
+        </div>
         <span>🤙 Telefon: 0759142186</span>
         <span>📞 WhatsApp: 0756921941</span>
       </div>
       <div id="footerFacebook">
         <div class="footerImg">
-        <img src="images/icons/facebook.webp" alt="Amo Gift Icon"  height="40px" />
+          <img
+            src="images/icons/facebook.webp"
+            alt="Amo Gift Icon"
+            height="40px"
+          />
         </div>
         <a href="https://www.facebook.com/AmoGiftOficial" target="_blank"
-          >🔎 Facebook</a>
+          >🔎 Facebook</a
+        >
       </div>
       <div id="footerEmail">
         <div class="footerImg">
-        <img src="images/icons/contact.webp" alt="Amo Gift Icon"  height="40px" />
+          <img
+            src="images/icons/contact.webp"
+            alt="Amo Gift Icon"
+            height="40px"
+          />
         </div>
         <a href="mailto:hristachem@yahoo.com">📩 Email us</a>
       </div>
       <div id="footerAddress">
         <div class="footerImg">
-        <img src="images/icons/address.webp" alt="Amo Gift Icon"  height="40px" />
+          <img
+            src="images/icons/address.webp"
+            alt="Amo Gift Icon"
+            height="40px"
+          />
         </div>
         <span>📌 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
       </div>
-        <img src="images/home-banner.jpg" alt="Amo Gift Banner" />
-        </section>
+      <img src="images/home-banner.jpg" alt="Amo Gift Banner" />
+    </section>
     `;
 }
 

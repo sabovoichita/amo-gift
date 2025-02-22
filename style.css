@@ -1,5 +1,7 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "The Girl Next Door", serif;
+  font-weight: 400;
+  font-style: normal;
   margin: 0;
   padding: 0;
   background-color: #000;
@@ -75,6 +77,7 @@ section {
 section h2 {
   color: #ff3b3b;
 }
+
 #home img,
 #reviews img {
   max-width: 100%;
@@ -138,13 +141,16 @@ footer div {
 }
 
 footer a,
-footer span {
+footer span,
+#contact a,
+#contact span {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
 }
 
-footer a:hover {
+footer a:hover,
+#contact a:hover {
   color: #ff3b3b;
 }
 
