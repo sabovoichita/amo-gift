@@ -2,6 +2,7 @@ body {
   font-family: "The Girl Next Door", serif;
   font-weight: 400;
   font-style: normal;
+  letter-spacing: 2px;
   margin: 0;
   padding: 0;
   background-color: #000;
@@ -84,6 +85,31 @@ section h2 {
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+button {
+  font-family: "The Girl Next Door", serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
+  background: linear-gradient(135deg, #c00000, #900);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #ff3b3b, #c00000);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(255, 0, 0, 0.5);
 }
 
 .productGrid {
