@@ -138,6 +138,21 @@ button:active {
   font-size: 1.1em;
 }
 
+.cart-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #c00000, #900);
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1000;
+}
+
 footer {
   background-color: #900;
   padding: 15px;

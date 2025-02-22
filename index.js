@@ -228,7 +228,28 @@ function addToCart(category, index) {
 
   cart.push(product);
   updateCartUI();
+  showNotification(`${product.name} added to cart!`);
 }
+
+function showNotification(message) {
+  const notification = document.createElement("div");
+  notification.classList.add("cart-notification");
+  notification.textContent = message;
+
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.style.opacity = "1";
+  }, 100);
+
+  setTimeout(() => {
+    notification.style.opacity = "0";
+    setTimeout(() => {
+      notification.remove();
+    }, 500);
+  }, 2000);
+}
+
 function updateCartUI() {
   const cartItems = document.getElementById("cartItems");
   if (cartItems) {
