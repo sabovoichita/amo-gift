@@ -126,6 +126,11 @@ function createProductsPage() {
       <div class="productGrid">
         ${generateProductImages("set", 2)}
       </div>
+
+      <h3>🍾 Ceramica Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages("ceramica", 6)}
+      </div>
     </section>
   `;
 }
