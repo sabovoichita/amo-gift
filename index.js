@@ -59,7 +59,7 @@ function createProductsPage() {
 
       <h3>🕯 Lumânare Collection</h3>
       <div class="productGrid">
-        ${generateProductImages("lumanare", 3)}
+        ${generateProductImages("lumanare", 4)}
       </div>
 
       <h3>🖼 Tablouri Licheni Collection</h3>
@@ -94,7 +94,7 @@ function createProductsPage() {
 
       <h3>🍾 Sticlă Collection</h3>
       <div class="productGrid">
-        ${generateProductImages("sticla", 7)}
+        ${generateProductImages("sticla", 8)}
       </div>
       
       <h3>🍾 Brățări Collection</h3>
@@ -110,6 +110,11 @@ function createProductsPage() {
       <h3>🍾 Buchet Collection</h3>
       <div class="productGrid">
         ${generateProductImages("buchet", 1)}
+      </div>
+
+      <h3>🍾 Pernă Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages("perna", 1)}
       </div>
     </section>
   `;
