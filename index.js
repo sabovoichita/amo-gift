@@ -225,7 +225,6 @@ function addToCart(category, index) {
     name: `${category.charAt(0).toUpperCase() + category.slice(1)} ${index}`,
     image: `images/${category}/${category}-${index}.jpg`,
   };
-
   cart.push(product);
   updateCartUI();
   showNotification(`${product.name} added to cart!`);
@@ -235,9 +234,7 @@ function showNotification(message) {
   const notification = document.createElement("div");
   notification.classList.add("cart-notification");
   notification.textContent = message;
-
   document.body.appendChild(notification);
-
   setTimeout(() => {
     notification.style.opacity = "1";
   }, 100);
