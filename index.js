@@ -229,7 +229,7 @@ function createContactPage() {
             height="40px"
           />
         </div>
-        <a href="mailto:hristachem@yahoo.com">📩 Email us</a>
+        <a href="mailto:hristachem@yahoo.com">📩 Email</a>
       </div>
       <div id="footerAddress">
         <div class="footerImg">
@@ -239,7 +239,7 @@ function createContactPage() {
             height="40px"
           />
         </div>
-        <span>📌 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
+        <span>📌 Str. Moigradului. Bl Nr.1/A, Zalau, Romania</span>
       </div>
       
     </section>
@@ -363,13 +363,13 @@ function createFooter() {
         <div class="footerImg">
         <img src="images/icons/contact.webp" alt="Amo Gift Icon"  height="40px" />
         </div>
-        <a href="mailto:hristachem@yahoo.com">📩 Email us</a>
+        <a href="mailto:hristachem@yahoo.com">📩 Email</a>
       </div>
       <div id="footerAddress">
         <div class="footerImg">
         <img src="images/icons/address.webp" alt="Amo Gift Icon"  height="40px" />
         </div>
-        <span>🏡 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
+        <span id="footerAdd">🏡 Str. Moigradului. Bl Nr.1/A, Zalau, Romania</span>
       </div>
     </footer>`;
 }

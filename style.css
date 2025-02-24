@@ -189,7 +189,9 @@ button:active {
   background-color: darkred;
 }
 
-footer {
+#footer {
+  bottom: 0;
+  position: fixed;
   background-color: #900;
   padding: 15px;
   display: flex;
@@ -229,6 +231,14 @@ footer span,
 footer a:hover,
 #contact a:hover {
   color: #ff3b3b;
+}
+#footerAdd {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 350px;
+  display: inline-block;
 }
 
 @media (max-width: 768px) {
