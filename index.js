@@ -39,16 +39,24 @@ function sendOrderToWhatsApp() {
     return;
   }
 
-  let message = "🛍 *New Order from Amo Gift!*\n\n";
+  let customerName = prompt("Enter your name:");
+  let customerAddress = prompt("Enter your address:");
+  let customerPhone = prompt("Enter your phone number:");
+
+  if (!customerName || !customerAddress || !customerPhone) {
+    alert("Please fill in all details before placing an order.");
+    return;
+  }
+
+  let message = `🛍 *New Order from Amo Gift!*\n\n`;
   cart.forEach((item, index) => {
     message += `${index + 1}. ${item.name} (x${item.quantity})\n`;
   });
 
-  message +=
-    "\n📞 *Please confirm your contact details:*\n- Name:\n- Address:\n- Phone:\n";
+  message += `\n📞 *Customer Details:*\n- Name: ${customerName}\n- Address: ${customerAddress}\n- Phone: ${customerPhone}`;
 
   const encodedMessage = encodeURIComponent(message);
-  const phone = "0034642771871"; //
+  const phone = "0034642771871";
   const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
 
   window.open(whatsappURL, "_blank");
@@ -481,7 +489,11 @@ function initEvents() {
       }
     });
   document.addEventListener("click", function (e) {
-    if (e.target.id === "placeOrder") {
+    if (e.target.classList.contains("addToCart")) {
+      const category = e.target.getAttribute("data-category");
+      const index = e.target.getAttribute("data-index");
+      addToCart(category, index);
+    } else if (e.target.id === "placeOrder") {
       sendOrderToWhatsApp();
     }
   });
