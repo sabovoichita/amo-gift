@@ -110,37 +110,20 @@ function generateCategorySection(category, count) {
 
 function loadReviews() {
   const reviewsContainer = document.getElementById("reviewsContainer");
-  if (!reviewsContainer.innerHTML.trim()) {
-    reviewsContainer.innerHTML = `
-     <div class="review">
-      <p><strong>Ana</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Best gifts ever! Totally recommend.</p>
-      <hr />
-    </div>
-    <div class="review">
-      <p><strong>Dana</strong> ⭐⭐⭐⭐</p>
-      <p>Great quality and fast delivery.</p>
-      <hr />
-    </div>
-    <div class="review">
-      <p><strong>Alina</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Great quality gifts! 🎁</p>
-      <hr />
-    </div>
-    <div class="review">
-      <p><strong>Raul</strong> ⭐⭐⭐⭐</p>
-      <p>Fast delivery and awesome products!</p>
-      <hr />
-    </div>
-    <div class="review">
-      <p><strong>Emma</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Will definitely order again. 🌟</p>
-      <hr />
-    </div>
-    `;
-  }
-  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  reviews.forEach((review) => {
+  reviewsContainer.innerHTML = "";
+
+  const defaultReviews = [
+    { name: "Ana", text: "Best gifts ever! Totally recommend.", rating: 5 },
+    { name: "Dana", text: "Great quality and fast delivery.", rating: 4 },
+    { name: "Alina", text: "Great quality gifts! 🎁", rating: 5 },
+    { name: "Raul", text: "Fast delivery and awesome products!", rating: 4 },
+    { name: "Emma", text: "Will definitely order again. 🌟", rating: 5 },
+  ];
+
+  const savedReviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  const allReviews = [...defaultReviews, ...savedReviews];
+
+  allReviews.forEach((review) => {
     const reviewElement = document.createElement("div");
     reviewElement.classList.add("review");
     reviewElement.innerHTML = `
