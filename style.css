@@ -138,23 +138,55 @@ button:active {
   box-shadow: 0 2px 5px rgba(255, 0, 0, 0.5);
 }
 
-.product-menu {
+.category-tabs {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+  background: #fff;
+  border-bottom: 2px solid #ddd;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
 }
 
-.product-menu button {
-  padding: 4px 8px;
-  /* background: #f8f8f8; */
+.category-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-tabs::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.category-tabs::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.category-tab {
+  flex: 0 0 auto;
+  padding: 10px 15px;
+  margin: 0 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+  background: #f8f8f8;
   border: 1px solid #ddd;
+  border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
-.product-menu button:hover {
-  background: #ddd;
+.category-tab.active {
+  background: #ff4d6d;
+  color: white;
+  border-color: #ff4d6d;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.category-tab:hover {
+  background: #ff758f;
+  color: white;
+  border-color: #ff758f;
 }
 
 .productGrid {
@@ -416,6 +448,10 @@ footer a:hover,
 
   .productCard {
     width: 90%;
+  }
+  .category-tab {
+    font-size: 14px;
+    padding: 8px 12px;
   }
 
   footer {
