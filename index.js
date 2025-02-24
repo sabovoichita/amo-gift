@@ -165,6 +165,23 @@ function createOrdersPage() {
           <ul id="cartItems"></ul>
           <button id="placeOrder">✅ Place Order</button>
       </div>
+      <div id="reviewsContainer">
+        <div class="review">
+          <p><strong>Alice</strong> ⭐⭐⭐⭐⭐</p>
+          <p>Great quality gifts! 🎁</p>
+          <hr/>
+        </div>
+        <div class="review">
+          <p><strong>Bob</strong> ⭐⭐⭐⭐</p>
+          <p>Fast delivery and awesome products!</p>
+          <hr/>
+        </div>
+        <div class="review">
+          <p><strong>Emma</strong> ⭐⭐⭐⭐⭐</p>
+          <p>Will definitely order again. 🌟</p>
+          <hr/>
+        </div>
+      </div>
     </section>
     `;
 }
@@ -176,6 +193,14 @@ function createReviewsPage() {
       <p>📚 At the end of your order please leave us a review!</p>
       <p>Thank you!</p>
       <img src="images/logo.jpg" alt="Amo Gift Logo" />
+      
+      <form id="reviewForm" onsubmit="saveReview(event)">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <textarea id="review" placeholder="Write your review" required></textarea>
+        <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)" required />
+        <button type="submit">Submit Review</button>
+      </form>
+      <div id="reviewsContainer"></div>
     </section>
     `;
 }
@@ -395,10 +420,72 @@ function sendOrderToWhatsApp() {
   window.open(whatsappURL, "_blank");
 }
 
+function loadReviews() {
+  const reviewsContainer = document.getElementById("reviewsContainer");
+  if (!reviewsContainer.innerHTML.trim()) {
+    reviewsContainer.innerHTML = `
+     <div class="review">
+      <p><strong>Ana</strong> ⭐⭐⭐⭐⭐</p>
+      <p>Best gifts ever! Totally recommend.</p>
+      <hr />
+    </div>
+    <div class="review">
+      <p><strong>Dana</strong> ⭐⭐⭐⭐</p>
+      <p>Great quality and fast delivery.</p>
+      <hr />
+    </div>
+    <div class="review">
+      <p><strong>Alina</strong> ⭐⭐⭐⭐⭐</p>
+      <p>Great quality gifts! 🎁</p>
+      <hr />
+    </div>
+    <div class="review">
+      <p><strong>Raul</strong> ⭐⭐⭐⭐</p>
+      <p>Fast delivery and awesome products!</p>
+      <hr />
+    </div>
+    <div class="review">
+      <p><strong>Emma</strong> ⭐⭐⭐⭐⭐</p>
+      <p>Will definitely order again. 🌟</p>
+      <hr />
+    </div>
+    `;
+  }
+  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  reviews.forEach((review) => {
+    const reviewElement = document.createElement("div");
+    reviewElement.classList.add("review");
+    reviewElement.innerHTML = `
+      <p><strong>${review.name}</strong> ${"⭐".repeat(review.rating)}</p>
+      <p>${review.text}</p>
+      <hr/>
+    `;
+    reviewsContainer.appendChild(reviewElement);
+  });
+}
+
+function saveReview(event) {
+  event.preventDefault();
+  const form = document.getElementById("reviewForm");
+  const name = document.getElementById("name").value;
+  const reviewText = document.getElementById("review").value;
+  const rating = document.getElementById("rating").value;
+  const newReview = {
+    name: name,
+    text: reviewText,
+    rating: rating,
+  };
+  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  reviews.push(newReview);
+  localStorage.setItem("reviews", JSON.stringify(reviews));
+  form.reset();
+  loadReviews();
+}
+
 function initEvents() {
   document.body.innerHTML =
     createHeader() + `<main id="main"></main>` + createFooter();
-  loadPage("contact");
+  loadPage("reviews");
   document
     .getElementById("top-menu-ul")
     .addEventListener("click", function (e) {

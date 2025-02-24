@@ -214,6 +214,82 @@ button:active {
   background-color: darkred;
 }
 
+#reviews {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  /* background: rgba(255, 255, 255, 0.9); */
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#reviewForm input,
+#reviewForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#reviewForm textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+#reviewForm button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#reviewForm button:hover {
+  background: #e63946;
+}
+
+#reviewsContainer {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.review {
+  background: #eee;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.review strong {
+  color: #333;
+}
+
+.review p {
+  margin: 5px 0;
+}
+
+.review hr {
+  border: none;
+  height: 1px;
+  background: #ddd;
+  margin-top: 10px;
+}
+
 #footer {
   bottom: 0;
 
