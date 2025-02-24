@@ -197,25 +197,26 @@ function createProductsPage() {
       <h2>🎈 Our Products!</h2>
       <p>🎀 Choose from our unique and personalized gifts.</p>
 
-      <nav class="product-menu">
-        <button onclick="showCategory('all')">📦 All Products</button>
-        <button onclick="showCategory('martisor')">🎁 Mărțișor</button>
-        <button onclick="showCategory('lumanare')">🕯 Lumânare</button>
-        <button onclick="showCategory('licheni')">🖼 Tablouri Licheni</button>
-        <button onclick="showCategory('aranjament')">💐 Aranjament</button>
-        <button onclick="showCategory('martie')">🌻 Martie</button>
-        <button onclick="showCategory('tricouri')">💑 Tricouri</button>
-        <button onclick="showCategory('botez')">👶 Botez</button>
-        <button onclick="showCategory('cana')">☕ Cană</button>
-        <button onclick="showCategory('sticla')">🍾 Sticlă</button>
-        <button onclick="showCategory('bratari')">🔗 Brățări</button>
-        <button onclick="showCategory('body')">👕 Body</button>
-        <button onclick="showCategory('buchet')">💐 Buchet</button>
-        <button onclick="showCategory('perna')">🛏 Pernă</button>
-        <button onclick="showCategory('eticheta')">🏷 Etichetă</button>
-        <button onclick="showCategory('set')">🎁 Set</button>
-        <button onclick="showCategory('ceramica')">🏺 Ceramica</button>
-      </nav>
+<select id="categorySelector" onchange="showCategory(this.value)">
+  <option value="all">📦 All Products</option>
+  <option value="martisor">🎁 Mărțișor</option>
+  <option value="lumanare">🕯 Lumânare</option>
+  <option value="licheni">🖼 Tablouri Licheni</option>
+  <option value="aranjament">💐 Aranjament</option>
+  <option value="martie">🌻 Martie</option>
+  <option value="tricouri">💑 Tricouri</option>
+  <option value="botez">👶 Botez</option>
+  <option value="cana">☕ Cană</option>
+  <option value="sticla">🍾 Sticlă</option>
+  <option value="bratari">🔗 Brățări</option>
+  <option value="body">👕 Body</option>
+  <option value="buchet">💐 Buchet</option>
+  <option value="perna">🛏 Pernă</option>
+  <option value="eticheta">🏷 Etichetă</option>
+  <option value="set">🎁 Set</option>
+  <option value="ceramica">🏺 Ceramica</option>
+</select>
+
 
       <div id="productsContainer">
         ${generateCategorySection("martisor", 9)}
@@ -462,7 +463,7 @@ function loadPage(page) {
 function initEvents() {
   document.body.innerHTML =
     createHeader() + `<main id="main"></main>` + createFooter();
-  loadPage("reviews");
+  loadPage("products");
   document
     .getElementById("top-menu-ul")
     .addEventListener("click", function (e) {

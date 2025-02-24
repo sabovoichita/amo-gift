@@ -146,7 +146,7 @@ button:active {
 }
 
 .product-menu button {
-  padding: 8px 12px;
+  padding: 4px 8px;
   /* background: #f8f8f8; */
   border: 1px solid #ddd;
   cursor: pointer;
@@ -160,7 +160,7 @@ button:active {
 .productGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
 }
 
 .productCategory {
