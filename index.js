@@ -161,26 +161,9 @@ function createOrdersPage() {
       <h2>🛒 Your Orders are here!</h2>
       <p>🥂 Thank you for shopping with us!</p>
       <div id="cart">
-         <h3>🛍 Your Cart</h3>
-          <ul id="cartItems"></ul>
-          <button id="placeOrder">✅ Place Order</button>
-      </div>
-      <div id="reviewsContainer">
-        <div class="review">
-          <p><strong>Alice</strong> ⭐⭐⭐⭐⭐</p>
-          <p>Great quality gifts! 🎁</p>
-          <hr/>
-        </div>
-        <div class="review">
-          <p><strong>Bob</strong> ⭐⭐⭐⭐</p>
-          <p>Fast delivery and awesome products!</p>
-          <hr/>
-        </div>
-        <div class="review">
-          <p><strong>Emma</strong> ⭐⭐⭐⭐⭐</p>
-          <p>Will definitely order again. 🌟</p>
-          <hr/>
-        </div>
+        <h3>🛍 Your Cart</h3>
+        <ul id="cartItems"></ul>
+        <button id="placeOrder">✅ Place Order</button>
       </div>
     </section>
     `;
@@ -188,19 +171,46 @@ function createOrdersPage() {
 
 function createReviewsPage() {
   return `
-    <section id="reviews">
+     <section id="reviews">
       <h2>🏆 Here are our reviews!</h2>
       <p>📚 At the end of your order please leave us a review!</p>
       <p>Thank you!</p>
       <img src="images/logo.jpg" alt="Amo Gift Logo" />
-      
+
       <form id="reviewForm" onsubmit="saveReview(event)">
         <input type="text" id="name" placeholder="Your Name" required />
-        <textarea id="review" placeholder="Write your review" required></textarea>
-        <input type="number" id="rating" min="1" max="5" placeholder="Rating (1-5)" required />
+        <textarea
+          id="review"
+          placeholder="Write your review"
+          required
+        ></textarea>
+        <input
+          type="number"
+          id="rating"
+          min="1"
+          max="5"
+          placeholder="Rating (1-5)"
+          required
+        />
         <button type="submit">Submit Review</button>
       </form>
-      <div id="reviewsContainer"></div>
+      <div id="reviewsContainer">
+        <div class="review">
+          <p><strong>Ana</strong> ⭐⭐⭐⭐⭐</p>
+          <p>Best gifts ever! Totally recommend.</p>
+          <hr />
+        </div>
+        <div class="review">
+          <p><strong>Dana</strong> ⭐⭐⭐⭐</p>
+          <p>Great quality and fast delivery.</p>
+          <hr />
+        </div>
+        <div class="review">
+          <p><strong>Alina</strong> ⭐⭐⭐⭐⭐</p>
+          <p>Great quality gifts! 🎁</p>
+          <hr />
+        </div>
+      </div>
     </section>
     `;
 }
