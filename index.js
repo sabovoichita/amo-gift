@@ -38,101 +38,77 @@ function createHomePage() {
 }
 
 function createProductsPage() {
-  setTimeout(() => {
-    document.querySelectorAll(".addToCart").forEach((button) => {
-      button.addEventListener("click", function () {
-        const category = this.getAttribute("data-category");
-        const index = this.getAttribute("data-index");
-        addToCart(category, index);
-      });
-    });
-  }, 100);
   return `
     <section id="products">
       <h2>🎈 Our Products!</h2>
       <p>🎀 Choose from our unique and personalized gifts.</p>
 
-      <h3>🎁 Mărțișor Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("martisor", 9)}
-      </div>
+      <nav class="product-menu">
+        <button onclick="showCategory('all')">📦 All Products</button>
+        <button onclick="showCategory('martisor')">🎁 Mărțișor</button>
+        <button onclick="showCategory('lumanare')">🕯 Lumânare</button>
+        <button onclick="showCategory('licheni')">🖼 Tablouri Licheni</button>
+        <button onclick="showCategory('aranjament')">💐 Aranjament</button>
+        <button onclick="showCategory('martie')">🌻 Martie</button>
+        <button onclick="showCategory('tricouri')">💑 Tricouri</button>
+        <button onclick="showCategory('botez')">👶 Botez</button>
+        <button onclick="showCategory('cana')">☕ Cană</button>
+        <button onclick="showCategory('sticla')">🍾 Sticlă</button>
+        <button onclick="showCategory('bratari')">🔗 Brățări</button>
+        <button onclick="showCategory('body')">👕 Body</button>
+        <button onclick="showCategory('buchet')">💐 Buchet</button>
+        <button onclick="showCategory('perna')">🛏 Pernă</button>
+        <button onclick="showCategory('eticheta')">🏷 Etichetă</button>
+        <button onclick="showCategory('set')">🎁 Set</button>
+        <button onclick="showCategory('ceramica')">🏺 Ceramica</button>
+      </nav>
 
-      <h3>🕯 Lumânare Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("lumanare", 4)}
-      </div>
-
-      <h3>🖼 Tablouri Licheni Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("licheni", 10)}
-      </div>
-
-      <h3>💐 Aranjament Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("aranjament", 23)}
-      </div>
-
-      <h3>🌻 Martie Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("martie", 6)}
-      </div>
-
-      <h3>💑 Tricouri Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("tricouri", 13)}
-      </div>
-
-      <h3>👶 Botez Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("botez", 1)}
-      </div>
-
-      <h3>☕ Cană Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("cana", 7)}
-      </div>
-
-      <h3>🍾 Sticlă Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("sticla", 7)}
-      </div>
-      
-      <h3>🍾 Brățări Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("bratari", 3)}
-      </div>
-
-      <h3>🍾 Body Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("body", 3)}
-      </div>
-
-      <h3>🍾 Buchet Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("buchet", 1)}
-      </div>
-
-      <h3>🍾 Pernă Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("perna", 1)}
-      </div>
-
-      <h3>🍾 Eticheta Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("eticheta", 2)}
-      </div>
-
-      <h3>🍾 Set Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("set", 2)}
-      </div>
-
-      <h3>🍾 Ceramica Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages("ceramica", 6)}
+      <div id="productsContainer">
+        ${generateCategorySection("martisor", 9)}
+        ${generateCategorySection("lumanare", 4)}
+        ${generateCategorySection("licheni", 10)}
+        ${generateCategorySection("aranjament", 23)}
+        ${generateCategorySection("martie", 6)}
+        ${generateCategorySection("tricouri", 13)}
+        ${generateCategorySection("botez", 1)}
+        ${generateCategorySection("cana", 7)}
+        ${generateCategorySection("sticla", 7)}
+        ${generateCategorySection("bratari", 3)}
+        ${generateCategorySection("body", 3)}
+        ${generateCategorySection("buchet", 1)}
+        ${generateCategorySection("perna", 1)}
+        ${generateCategorySection("eticheta", 2)}
+        ${generateCategorySection("set", 2)}
+        ${generateCategorySection("ceramica", 6)}
       </div>
     </section>
   `;
+}
+
+function generateCategorySection(category, count) {
+  return `
+    <div class="productCategory" id="category-${category}">
+      <h3>${
+        category.charAt(0).toUpperCase() + category.slice(1)
+      } Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages(category, count)}
+      </div>
+    </div>
+  `;
+}
+
+function showCategory(category) {
+  const allSections = document.querySelectorAll(".productCategory");
+
+  allSections.forEach((section) => {
+    if (category === "all") {
+      section.style.display = "block"; // Show all categories
+    } else {
+      section.style.display =
+        section.id === `category-${category}` ? "block" : "none";
+    }
+  });
 }
 
 function generateProductImages(category, count) {

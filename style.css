@@ -138,6 +138,35 @@ button:active {
   box-shadow: 0 2px 5px rgba(255, 0, 0, 0.5);
 }
 
+.product-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.product-menu button {
+  padding: 8px 12px;
+  /* background: #f8f8f8; */
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.product-menu button:hover {
+  background: #ddd;
+}
+
+.productGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.productCategory {
+  display: block;
+}
+
 .productGrid {
   display: flex;
   flex-wrap: wrap;
