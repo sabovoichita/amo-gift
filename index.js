@@ -173,8 +173,8 @@ function createReviewsPage() {
   return `
      <section id="reviews">
       <h2>🏆 Here are our reviews!</h2>
-      <p>📚 At the end of your order please leave us a review!</p>
-      <p>Thank you!</p>
+      <p id="reviewText">📚 At the end of your order please leave us a review! Thank you</p>
+      
       <img src="images/logo.jpg" alt="Amo Gift Logo" />
 
       <form id="reviewForm" onsubmit="saveReview(event)">

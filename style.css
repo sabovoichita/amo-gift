@@ -224,6 +224,9 @@ button:active {
   color: black;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+#reviews #reviewText {
+  color: white;
+}
 
 #reviewForm {
   display: flex;
