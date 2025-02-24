@@ -1,5 +1,167 @@
 let cart = [];
 
+function showNotification(message) {
+  const notification = document.createElement("div");
+  notification.classList.add("cart-notification");
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  setTimeout(() => {
+    notification.style.opacity = "1";
+  }, 100);
+
+  setTimeout(() => {
+    notification.style.opacity = "0";
+    setTimeout(() => {
+      notification.remove();
+    }, 500);
+  }, 2000);
+}
+
+function updateCartUI() {
+  const cartItems = document.getElementById("cartItems");
+  if (cartItems) {
+    cartItems.innerHTML = "";
+    cart.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" height="50px"/>
+        <span>${item.name} (x ${item.quantity} pieces)</span>
+        <button onclick="removeFromCart(${index})">❌ Remove</button>
+      `;
+      cartItems.appendChild(li);
+    });
+  }
+}
+
+function sendOrderToWhatsApp() {
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let message = "🛍 *New Order from Amo Gift!*\n\n";
+  cart.forEach((item, index) => {
+    message += `${index + 1}. ${item.name} (x${item.quantity})\n`;
+  });
+
+  message +=
+    "\n📞 *Please confirm your contact details:*\n- Name:\n- Address:\n- Phone:\n";
+
+  const encodedMessage = encodeURIComponent(message);
+  const phone = "0034642771871"; //
+  const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
+
+  window.open(whatsappURL, "_blank");
+}
+
+function showCategory(category) {
+  const allSections = document.querySelectorAll(".productCategory");
+
+  allSections.forEach((section) => {
+    if (category === "all") {
+      section.style.display = "block"; // Show all categories
+    } else {
+      section.style.display =
+        section.id === `category-${category}` ? "block" : "none";
+    }
+  });
+}
+
+function generateProductImages(category, count) {
+  let imagesHTML = "";
+  for (let i = 1; i <= count; i++) {
+    imagesHTML += `
+        <div class="productCard">
+          <div class="productImgWrap">
+            <img src="images/${category}/${category}-${i}.jpg" alt="${category} ${i}" class="productImage" height="200px"/>
+          </div>
+          <div class="productDetails">
+            <h3>${
+              category.charAt(0).toUpperCase() + category.slice(1)
+            } ${i}</h3>
+             <button class="addToCart" data-category="${category}" data-index="${i}">🛒 Add to Cart</button>
+          </div>
+        </div>
+      `;
+  }
+  return imagesHTML;
+}
+
+function generateCategorySection(category, count) {
+  return `
+    <div class="productCategory" id="category-${category}">
+      <h3>${
+        category.charAt(0).toUpperCase() + category.slice(1)
+      } Collection</h3>
+      <div class="productGrid">
+        ${generateProductImages(category, count)}
+      </div>
+    </div>
+  `;
+}
+
+function loadReviews() {
+  const reviewsContainer = document.getElementById("reviewsContainer");
+  if (!reviewsContainer.innerHTML.trim()) {
+    reviewsContainer.innerHTML = `
+     <div class="review">
+      <p><strong>Ana</strong> ⭐⭐⭐⭐⭐</p>
+      <p>Best gifts ever! Totally recommend.</p>
+      <hr />
+    </div>
+    <div class="review">
+      <p><strong>Dana</strong> ⭐⭐⭐⭐</p>
+      <p>Great quality and fast delivery.</p>
+      <hr />
+    </div>
+    <div class="review">
+      <p><strong>Alina</strong> ⭐⭐⭐⭐⭐</p>
+      <p>Great quality gifts! 🎁</p>
+      <hr />
+    </div>
+    <div class="review">
+      <p><strong>Raul</strong> ⭐⭐⭐⭐</p>
+      <p>Fast delivery and awesome products!</p>
+      <hr />
+    </div>
+    <div class="review">
+      <p><strong>Emma</strong> ⭐⭐⭐⭐⭐</p>
+      <p>Will definitely order again. 🌟</p>
+      <hr />
+    </div>
+    `;
+  }
+  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  reviews.forEach((review) => {
+    const reviewElement = document.createElement("div");
+    reviewElement.classList.add("review");
+    reviewElement.innerHTML = `
+      <p><strong>${review.name}</strong> ${"⭐".repeat(review.rating)}</p>
+      <p>${review.text}</p>
+      <hr/>
+    `;
+    reviewsContainer.appendChild(reviewElement);
+  });
+}
+
+function saveReview(event) {
+  event.preventDefault();
+  const form = document.getElementById("reviewForm");
+  const name = document.getElementById("name").value;
+  const reviewText = document.getElementById("review").value;
+  const rating = document.getElementById("rating").value;
+  const newReview = {
+    name: name,
+    text: reviewText,
+    rating: rating,
+  };
+  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+  reviews.push(newReview);
+  localStorage.setItem("reviews", JSON.stringify(reviews));
+  form.reset();
+  loadReviews();
+}
+
 function createTitle() {
   return `<h1>Amo Gift</h1>`;
 }
@@ -27,6 +189,7 @@ function createMenuBar() {
     </div>
     `;
 }
+
 function createHomePage() {
   return `
       <section id="home">
@@ -83,52 +246,6 @@ function createProductsPage() {
       </div>
     </section>
   `;
-}
-
-function generateCategorySection(category, count) {
-  return `
-    <div class="productCategory" id="category-${category}">
-      <h3>${
-        category.charAt(0).toUpperCase() + category.slice(1)
-      } Collection</h3>
-      <div class="productGrid">
-        ${generateProductImages(category, count)}
-      </div>
-    </div>
-  `;
-}
-
-function showCategory(category) {
-  const allSections = document.querySelectorAll(".productCategory");
-
-  allSections.forEach((section) => {
-    if (category === "all") {
-      section.style.display = "block"; // Show all categories
-    } else {
-      section.style.display =
-        section.id === `category-${category}` ? "block" : "none";
-    }
-  });
-}
-
-function generateProductImages(category, count) {
-  let imagesHTML = "";
-  for (let i = 1; i <= count; i++) {
-    imagesHTML += `
-        <div class="productCard">
-          <div class="productImgWrap">
-            <img src="images/${category}/${category}-${i}.jpg" alt="${category} ${i}" class="productImage" height="200px"/>
-          </div>
-          <div class="productDetails">
-            <h3>${
-              category.charAt(0).toUpperCase() + category.slice(1)
-            } ${i}</h3>
-             <button class="addToCart" data-category="${category}" data-index="${i}">🛒 Add to Cart</button>
-          </div>
-        </div>
-      `;
-  }
-  return imagesHTML;
 }
 
 function createOrdersPage() {
@@ -257,90 +374,6 @@ function createContactPage() {
     `;
 }
 
-function loadPage(page) {
-  const main = document.getElementById("main");
-  if (page === "home") {
-    main.innerHTML = createHomePage();
-  } else if (page === "products") {
-    main.innerHTML = createProductsPage();
-  } else if (page === "orders") {
-    main.innerHTML = createOrdersPage();
-    updateCartUI();
-  } else if (page === "reviews") {
-    main.innerHTML = createReviewsPage();
-  } else if (page === "contact") {
-    main.innerHTML = createContactPage();
-  } else {
-    console.log("creating page");
-    main.innerHTML = `<h2>${page} page is under construction</h2>`;
-  }
-}
-
-function addToCart(category, index) {
-  const productName = `${
-    category.charAt(0).toUpperCase() + category.slice(1)
-  } ${index}`;
-  const existingItem = cart.find(
-    (item) => item.category === category && item.index === index
-  );
-  if (existingItem) {
-    existingItem.quantity += 1;
-  } else {
-    cart.push({
-      category: category,
-      index: index,
-      name: productName,
-      image: `images/${category}/${category}-${index}.jpg`,
-      quantity: 1,
-    });
-  }
-
-  updateCartUI();
-  showNotification(`${productName} added to cart!`);
-}
-
-function showNotification(message) {
-  const notification = document.createElement("div");
-  notification.classList.add("cart-notification");
-  notification.textContent = message;
-  document.body.appendChild(notification);
-  setTimeout(() => {
-    notification.style.opacity = "1";
-  }, 100);
-
-  setTimeout(() => {
-    notification.style.opacity = "0";
-    setTimeout(() => {
-      notification.remove();
-    }, 500);
-  }, 2000);
-}
-
-function updateCartUI() {
-  const cartItems = document.getElementById("cartItems");
-  if (cartItems) {
-    cartItems.innerHTML = "";
-    cart.forEach((item, index) => {
-      const li = document.createElement("li");
-      li.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" height="50px"/>
-        <span>${item.name} (x ${item.quantity} pieces)</span>
-        <button onclick="removeFromCart(${index})">❌ Remove</button>
-      `;
-      cartItems.appendChild(li);
-    });
-  }
-}
-
-function removeFromCart(index) {
-  if (cart[index].quantity > 1) {
-    cart[index].quantity -= 1;
-  } else {
-    cart.splice(index, 1);
-  }
-  updateCartUI();
-}
-
 function createFooter() {
   return `
     <footer id="footer">
@@ -384,88 +417,55 @@ function createFooter() {
       </div>
     </footer>`;
 }
-
-function sendOrderToWhatsApp() {
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
+function addToCart(category, index) {
+  const productName = `${
+    category.charAt(0).toUpperCase() + category.slice(1)
+  } ${index}`;
+  const existingItem = cart.find(
+    (item) => item.category === category && item.index === index
+  );
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({
+      category: category,
+      index: index,
+      name: productName,
+      image: `images/${category}/${category}-${index}.jpg`,
+      quantity: 1,
+    });
   }
 
-  let message = "🛍 *New Order from Amo Gift!*\n\n";
-  cart.forEach((item, index) => {
-    message += `${index + 1}. ${item.name} (x${item.quantity})\n`;
-  });
-
-  message +=
-    "\n📞 *Please confirm your contact details:*\n- Name:\n- Address:\n- Phone:\n";
-
-  const encodedMessage = encodeURIComponent(message);
-  const phone = "0034642771871"; //
-  const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
-
-  window.open(whatsappURL, "_blank");
+  updateCartUI();
+  showNotification(`${productName} added to cart!`);
 }
 
-function loadReviews() {
-  const reviewsContainer = document.getElementById("reviewsContainer");
-  if (!reviewsContainer.innerHTML.trim()) {
-    reviewsContainer.innerHTML = `
-     <div class="review">
-      <p><strong>Ana</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Best gifts ever! Totally recommend.</p>
-      <hr />
-    </div>
-    <div class="review">
-      <p><strong>Dana</strong> ⭐⭐⭐⭐</p>
-      <p>Great quality and fast delivery.</p>
-      <hr />
-    </div>
-    <div class="review">
-      <p><strong>Alina</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Great quality gifts! 🎁</p>
-      <hr />
-    </div>
-    <div class="review">
-      <p><strong>Raul</strong> ⭐⭐⭐⭐</p>
-      <p>Fast delivery and awesome products!</p>
-      <hr />
-    </div>
-    <div class="review">
-      <p><strong>Emma</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Will definitely order again. 🌟</p>
-      <hr />
-    </div>
-    `;
+function removeFromCart(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1);
   }
-  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  reviews.forEach((review) => {
-    const reviewElement = document.createElement("div");
-    reviewElement.classList.add("review");
-    reviewElement.innerHTML = `
-      <p><strong>${review.name}</strong> ${"⭐".repeat(review.rating)}</p>
-      <p>${review.text}</p>
-      <hr/>
-    `;
-    reviewsContainer.appendChild(reviewElement);
-  });
+  updateCartUI();
 }
 
-function saveReview(event) {
-  event.preventDefault();
-  const form = document.getElementById("reviewForm");
-  const name = document.getElementById("name").value;
-  const reviewText = document.getElementById("review").value;
-  const rating = document.getElementById("rating").value;
-  const newReview = {
-    name: name,
-    text: reviewText,
-    rating: rating,
-  };
-  const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
-  reviews.push(newReview);
-  localStorage.setItem("reviews", JSON.stringify(reviews));
-  form.reset();
-  loadReviews();
+function loadPage(page) {
+  const main = document.getElementById("main");
+  if (page === "home") {
+    main.innerHTML = createHomePage();
+  } else if (page === "products") {
+    main.innerHTML = createProductsPage();
+  } else if (page === "orders") {
+    main.innerHTML = createOrdersPage();
+    updateCartUI();
+  } else if (page === "reviews") {
+    main.innerHTML = createReviewsPage();
+  } else if (page === "contact") {
+    main.innerHTML = createContactPage();
+  } else {
+    console.log("creating page");
+    main.innerHTML = `<h2>${page} page is under construction</h2>`;
+  }
 }
 
 function initEvents() {
@@ -486,4 +486,5 @@ function initEvents() {
     }
   });
 }
+
 initEvents();
