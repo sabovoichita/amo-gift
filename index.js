@@ -463,7 +463,7 @@ function loadPage(page) {
 function initEvents() {
   document.body.innerHTML =
     createHeader() + `<main id="main"></main>` + createFooter();
-  loadPage("products");
+  loadPage("home");
   document
     .getElementById("top-menu-ul")
     .addEventListener("click", function (e) {
