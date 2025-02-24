@@ -94,7 +94,7 @@ function createProductsPage() {
 
       <h3>🍾 Sticlă Collection</h3>
       <div class="productGrid">
-        ${generateProductImages("sticla", 8)}
+        ${generateProductImages("sticla", 7)}
       </div>
       
       <h3>🍾 Brățări Collection</h3>
@@ -186,7 +186,6 @@ function createContactPage() {
       <h2>☎ Contact us for your order!</h2>
       <p>📚 We are here to help!</p>
       <p>🙏 Thank you!</p>
-      <img src="images/icons/contact.webp" alt="Amo Gift Icon" height="40px" />
       <div id="footerMobile">
         <div class="footerImg">
           <img
@@ -210,6 +209,18 @@ function createContactPage() {
           >🔎 Facebook</a
         >
       </div>
+      <div id="footerTiktok">
+        <div class="footerImg">
+          <img
+            src="images/icons/tiktok.webp"
+            alt="Amo Gift Tiktok"
+            height="40px"
+          />
+        </div>
+        <a href="https://www.tiktok.com/@amogiftoficial/" target="_blank"
+          >🎶 Tiktok</a
+        >
+      </div>
       <div id="footerEmail">
         <div class="footerImg">
           <img
@@ -230,7 +241,7 @@ function createContactPage() {
         </div>
         <span>📌 Str. Moigradului. Nr.1/A Bl. Ortelec, Zalau, Romania</span>
       </div>
-      <img src="images/home-banner.jpg" alt="Amo Gift Banner" />
+      
     </section>
     `;
 }
@@ -336,6 +347,18 @@ function createFooter() {
         <a href="https://www.facebook.com/AmoGiftOficial" target="_blank"
           >🔎 Facebook</a>
       </div>
+       <div id="footerTiktok">
+        <div class="footerImg">
+          <img
+            src="images/icons/tiktok.webp"
+            alt="Amo Gift Tiktok"
+            height="40px"
+          />
+        </div>
+        <a href="https://www.tiktok.com/@amogiftoficial/" target="_blank"
+          >🎶 Tiktok</a
+        >
+      </div>
       <div id="footerEmail">
         <div class="footerImg">
         <img src="images/icons/contact.webp" alt="Amo Gift Icon"  height="40px" />
@@ -375,7 +398,7 @@ function sendOrderToWhatsApp() {
 function initEvents() {
   document.body.innerHTML =
     createHeader() + `<main id="main"></main>` + createFooter();
-  loadPage("home");
+  loadPage("contact");
   document
     .getElementById("top-menu-ul")
     .addEventListener("click", function (e) {
