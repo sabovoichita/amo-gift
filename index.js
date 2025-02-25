@@ -472,6 +472,13 @@ function initEvents() {
         loadPage(page);
       }
     });
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+    `<button id="menu-toggle">☰</button>`
+  );
+  document.getElementById("menu-toggle").addEventListener("click", function () {
+    document.getElementById("top-menu").classList.toggle("active");
+  });
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("addToCart")) {
       const category = e.target.getAttribute("data-category");
