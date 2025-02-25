@@ -1,5 +1,7 @@
 let cart = [];
-
+function $(selector, parent) {
+  return (parent || document).querySelector(selector);
+}
 function showNotification(message) {
   const notification = document.createElement("div");
   notification.classList.add("cart-notification");
@@ -33,32 +35,33 @@ function updateCartUI() {
   }
 }
 
-function sendOrderToWhatsApp() {
+async function sendOrderToWhatsApp() {
   if (cart.length === 0) {
-    alert("Your cart is empty!");
+    await simpleAlert("Your cart is empty!");
     return;
   }
-
-  let customerName = prompt("Enter your name:");
-  let customerAddress = prompt("Enter your address:");
-  let customerPhone = prompt("Enter your phone number:");
-
-  if (!customerName || !customerAddress || !customerPhone) {
-    alert("Please fill in all details before placing an order.");
+  const details = await simpleMultiPrompt("Enter your details:", [
+    { label: "Name", id: "customerName", placeholder: "Your name" },
+    { label: "Address", id: "customerAddress", placeholder: "Your address" },
+    {
+      label: "Phone Number",
+      id: "customerPhone",
+      placeholder: "Your phone number",
+    },
+  ]);
+  if (!details) {
+    console.log("No details provided.");
     return;
   }
-
-  let message = `🛍 *New Order from Amo Gift!*\n\n`;
+  const { customerName, customerAddress, customerPhone } = details;
+  let message = `🛍 *New Order from The Garden Soul!*\n\n`;
   cart.forEach((item, index) => {
     message += `${index + 1}. ${item.name} (x${item.quantity})\n`;
   });
-
   message += `\n📞 *Customer Details:*\n- Name: ${customerName}\n- Address: ${customerAddress}\n- Phone: ${customerPhone}`;
-
   const encodedMessage = encodeURIComponent(message);
   const phone = "0034642771871";
   const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
-
   window.open(whatsappURL, "_blank");
 }
 
